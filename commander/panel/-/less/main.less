@@ -1,0 +1,230 @@
+// head {
+@import "../../../../../css/std/-/less/main.less";
+
+@__nodeId__: ~"ss_qr_commander_panel__main";
+// }
+
+.@{__nodeId__} {
+
+    .h100() {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        flex-grow: 1;
+    }
+
+    .h100;
+
+    .cp {
+        padding: 5px 8px;
+
+        background: linear-gradient(#F5F5F5, #EFEFEF);
+        border-top: 1px solid #D5D5D5;
+        border-bottom: 1px solid #C0C0C0;
+
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        flex-shrink: 0;
+
+        .button {
+            .__button;
+
+            margin: 0;
+
+            .small;
+            border-color: #CECECE;
+
+            &.clear {
+                .red;
+            }
+
+            &.add {
+                .green;
+            }
+
+            &.print {
+                .blue;
+                text-decoration: none;
+            }
+        }
+    }
+
+    .content {
+        .h100;
+
+        background-color: #F5F5F5;
+
+        overflow-y: auto;
+
+        .buttons() {
+            position: absolute;
+            right: 15px;
+            top: 25px;
+
+            .button {
+                cursor: pointer;
+                width: 30px;
+                height: 30px;
+                border-radius: 20px;
+
+                display: flex;
+                justify-content: center;
+                align-items: center;
+
+                transition: all 0.1s;
+
+                .icon {
+                    font-size: 14px;
+                    color: #CBCBCB;
+                }
+
+                &.delete {
+
+                    &:hover {
+                        background-color: #FF2424;
+
+                        .icon {
+                            color: #FFFFFF;
+                        }
+                    }
+                }
+
+                &:active {
+
+                }
+            }
+        }
+
+        .cats {
+
+            .cat {
+                position: relative;
+                display: flex;
+                align-items: center;
+                flex-shrink: 0;
+
+                .qr_code {
+                    display: block;
+                }
+
+                .name {
+                    display: flex;
+
+                    .icon {
+                        color: #F1B457;
+                        margin-right: 5px;
+                    }
+                }
+
+                .buttons {
+                    .buttons;
+
+                    display: none;
+                }
+
+                &:hover {
+
+                    .buttons {
+                        display: block;
+                    }
+                }
+            }
+        }
+
+        .products {
+
+            .product {
+                position: relative;
+                display: flex;
+                align-items: center;
+                flex-shrink: 0;
+
+                .qr_code {
+                    display: block;
+                }
+
+                .name {
+                    display: flex;
+
+                    .icon {
+                        color: #F1B457;
+                        margin-right: 5px;
+                    }
+                }
+
+                .buttons {
+                    .buttons;
+
+                    display: none;
+                }
+
+                &:hover {
+
+                    .buttons {
+                        display: block;
+                    }
+                }
+            }
+        }
+
+        .qr_code {
+
+            .in_focus {
+                display: none;
+            }
+
+            .not_in_focus {
+                display: block;
+            }
+        }
+    }
+
+    &.focus {
+
+        .qr_code {
+
+            .in_focus {
+                display: block;
+            }
+
+            .not_in_focus {
+                display: none;
+            }
+        }
+
+        > .cp {
+            background: linear-gradient(#424242, #404040);
+            border-top: 1px solid #484848;
+
+            .button {
+                background: linear-gradient(#464646, #2D2D2D);
+                border: 1px solid #333333;
+                color: #B1B1B1;
+
+                &:hover {
+                    background: linear-gradient(#2D2D2D, #2D2D2D);
+                    border-color: #292929;
+                    color: #B1B1B1;
+                }
+
+                &.disabled {
+                    cursor: default;
+                    background: linear-gradient(#3C3C3C, #333333);
+                    color: #6F6F6F;
+                    border-color: #353535;
+
+                    &:active {
+                        position: relative;
+                        left: 0;
+                        top: 0;
+                    }
+                }
+            }
+        }
+
+        > .content {
+            background-color: #FFFFFF;
+        }
+    }
+}
