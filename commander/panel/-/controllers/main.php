@@ -51,6 +51,9 @@ class Main extends \Controller
 
         $baseUrl = trim_r_slash(ss()->trees->plugins->pluginData($tree, 'qr', 'base_url'));
 
+        $punycode = new \TrueBV\Punycode();
+        $baseUrl = $punycode->encode($baseUrl);
+
         foreach ($catsIds as $catId) {
             if ($cat = $cats[$catId] ?? false) {
                 $url = $baseUrl . '/c/' . ($cat->articul ? $cat->articul : $cat->id);
@@ -95,6 +98,11 @@ class Main extends \Controller
             }
         }
 
+        $target = j64_([
+                           's_path' => $this->_p() . '|' . $this->_instance() . '/tree-' . $tree->id,
+                           'tree'   => pack_model($tree)
+                       ]);
+
         $v->assign([
                        'FOCUS_CLASS'  => $this->panel->hasFocus('plugins') ? 'focus' : '',
                        'CLEAR_BUTTON' => $this->c('\std\ui button:view', [
@@ -102,7 +110,7 @@ class Main extends \Controller
                            'class'   => 'clear button',
                            'content' => 'Очистить'
                        ]),
-                       'PRINT_URL'    => abs_url('cp/memorial/commander1/qr-print')
+                       'PRINT_URL'    => abs_url('cp/ss/qr-codes/printing/' . $target)
                    ]);
 
         $this->css(':\css\std~');
